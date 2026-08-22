@@ -1,64 +1,81 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
 import { useStore } from "../context/StoreContext";
 import { C } from "../lib/data";
 import LoginModal from "./LoginModal";
 import SearchOverlay from "./SearchOverlay";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { cartCount, user } = useStore();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      {/* Announcement Bar */}
-      <div style={{ background: C.oxblood, color: C.cream, textAlign: "center", padding: "8px 0", fontSize: 12.5, letterSpacing: "0.04em", fontFamily: "Inter, sans-serif", fontWeight: 500 }}>
-        FREE SHIPPING ON ORDERS OVER ₹1999 | CASH ON DELIVERY AVAILABLE
-      </div>
-
-      <header style={{ position: "sticky", top: 0, zIndex: 40, background: C.cream, borderBottom: `1px solid ${C.line}` }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <header 
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "py-2 shadow-lg" : "py-4"} backdrop-blur-md`}
+        style={{ backgroundColor: isScrolled ? "rgba(107, 30, 42, 0.95)" : C.oxblood, color: C.cream }}
+      >
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between">
           
           {/* Mobile Menu Icon */}
           <div className="md:hidden flex-1">
-            <button onClick={() => setMenuOpen(!menuOpen)}>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="hover:opacity-70 transition-opacity">
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Nav Links (Desktop) */}
-          <nav className="hidden md:flex flex-1 items-center gap-8" style={{ fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", textTransform: "uppercase" }}>
-            <Link href="/products" className="hover:text-oxblood transition-colors">Shop</Link>
-            <Link href="/about" className="hover:text-oxblood transition-colors">Our Story</Link>
+          <nav className="hidden md:flex flex-1 items-center gap-10" style={{ fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <div className="group relative py-4">
+              <Link href="/products" className="hover:text-white/70 transition-colors">Shop</Link>
+              {/* Simple Mega Menu Dropdown */}
+              <div className="absolute top-full left-0 mt-0 w-48 bg-white text-black shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100 flex flex-col py-4 px-6 rounded-sm">
+                <Link href="/products?cat=kurti" className="text-xs mb-4 hover:text-gray-500">Kurtis</Link>
+                <Link href="/products?cat=set" className="text-xs mb-4 hover:text-gray-500">Co-ord Sets</Link>
+                <Link href="/products?cat=pant" className="text-xs hover:text-gray-500">Bottoms</Link>
+              </div>
+            </div>
+            <Link href="/about" className="hover:text-white/70 transition-colors py-4">Our Story</Link>
           </nav>
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 text-center flex-1 md:flex-none">
-            <div style={{ fontFamily: "Fraunces, serif", fontSize: 26, fontWeight: 600, color: C.ink, letterSpacing: "-0.02em" }}>
+            <div style={{ fontFamily: "Fraunces, serif", fontSize: 32, fontWeight: 500, color: C.cream, letterSpacing: "0.02em" }}>
               Aavaran
             </div>
           </Link>
 
           {/* Icons */}
-          <div className="flex flex-1 justify-end items-center gap-4 md:gap-6">
-            <button className="hidden md:block hover:opacity-70 transition-opacity" onClick={() => setSearchOpen(true)}>
-              <Search size={20} strokeWidth={1.5} />
+          <div className="flex flex-1 justify-end items-center gap-6 md:gap-8">
+            <button className="hidden md:block hover:text-white/70 transition-colors" onClick={() => setSearchOpen(true)}>
+              <Search size={22} strokeWidth={1.5} />
             </button>
-            <button className="hover:opacity-70 transition-opacity" onClick={() => user ? window.location.href='/profile' : setLoginOpen(true)}>
-              <User size={20} strokeWidth={1.5} fill={user ? "black" : "none"} />
+            <button className="hover:text-white/70 transition-colors" onClick={() => user ? window.location.href='/profile' : setLoginOpen(true)}>
+              <User size={22} strokeWidth={1.5} fill={user ? C.cream : "none"} />
             </button>
-            <Link href="/cart" style={{ position: "relative" }} className="hover:opacity-70 transition-opacity">
-              <ShoppingBag size={20} strokeWidth={1.5} />
+            <Link href="/cart" className="relative hover:text-white/70 transition-colors">
+              <ShoppingBag size={22} strokeWidth={1.5} />
               {cartCount > 0 && (
-                <span style={{
-                  position: "absolute", top: -6, right: -8, background: C.oxblood, color: C.cream,
-                  fontSize: 10, fontWeight: 600, width: 16, height: 16, borderRadius: "50%",
-                  display: "flex", alignItems: "center", justifyContent: "center"
-                }}>
+                <span className="absolute -top-1.5 -right-2 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -66,16 +83,26 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Dropdown */}
         {menuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-cream border-b p-4 shadow-lg" style={{ background: C.cream, borderBottom: `1px solid ${C.line}` }}>
-            <nav className="flex flex-col gap-4" style={{ fontFamily: "Inter, sans-serif", fontSize: 14, fontWeight: 500 }}>
-              <Link href="/products" onClick={() => setMenuOpen(false)}>Shop</Link>
+          <div className="md:hidden absolute top-full left-0 right-0 h-screen p-8" style={{ backgroundColor: C.oxblood, color: C.cream }}>
+            <nav className="flex flex-col gap-8 text-xl" style={{ fontFamily: "Fraunces, serif" }}>
+              <Link href="/products" onClick={() => setMenuOpen(false)}>Shop Collection</Link>
+              <Link href="/products?cat=kurti" className="text-base text-white/70" onClick={() => setMenuOpen(false)}>Kurtis</Link>
+              <Link href="/products?cat=set" className="text-base text-white/70" onClick={() => setMenuOpen(false)}>Co-ord Sets</Link>
+              <Link href="/products?cat=pant" className="text-base text-white/70" onClick={() => setMenuOpen(false)}>Bottoms</Link>
+              <div className="h-px bg-white/20 my-4" />
               <Link href="/about" onClick={() => setMenuOpen(false)}>Our Story</Link>
+              <button className="text-left flex items-center gap-4" onClick={() => { setMenuOpen(false); setSearchOpen(true); }}>
+                Search <Search size={20} />
+              </button>
             </nav>
           </div>
         )}
       </header>
+      
+      {/* Spacer to push content below fixed header */}
+      <div className="h-[72px] md:h-[88px]" />
       
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       {loginOpen && <LoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} />}
