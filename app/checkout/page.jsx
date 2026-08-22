@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Lock, ShieldCheck, ChevronRight } from "lucide-react";
 import { useStore } from "../../context/StoreContext";
 import { C } from "../../lib/data";
+import { toast } from "sonner";
 
 export default function CheckoutPage() {
   const { cart } = useStore();
@@ -115,7 +116,7 @@ export default function CheckoutPage() {
                   Return to Information
                 </button>
                 <button 
-                  onClick={() => alert("Order Placed Successfully! (Demo)")}
+                  onClick={() => toast.success("Order Placed Successfully! (Demo)")}
                   className="px-10 py-4 bg-black text-white text-xs tracking-widest uppercase hover:bg-black/90 transition-colors flex items-center gap-2"
                 >
                   <Lock size={14} /> Pay ₹{total.toLocaleString("en-IN")}

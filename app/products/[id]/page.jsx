@@ -7,6 +7,7 @@ import { useStore } from "../../../context/StoreContext";
 import { PRODUCTS, C } from "../../../lib/data";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import ProductCard from "../../../components/ProductCard";
+import { toast } from "sonner";
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -34,7 +35,7 @@ export default function ProductDetailsPage() {
 
   const handleAdd = () => {
     addToCart(product, size, 1);
-    alert(`${product.name} (Size: ${size}) added to cart!`);
+    toast.success(`${product.name} (Size: ${size}) added to cart!`);
   };
 
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
@@ -189,7 +190,7 @@ export default function ProductDetailsPage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {recommended.map((prod) => (
-              <ProductCard key={prod.id} product={prod} onAdd={(p) => { addToCart(p, "M", 1); alert(`${p.name} added!`); }} />
+              <ProductCard key={prod.id} product={prod} onAdd={(p) => { addToCart(p, "M", 1); toast.success(`${p.name} added!`); }} />
             ))}
           </div>
         </section>

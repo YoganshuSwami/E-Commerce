@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { User, LogOut, Search } from "lucide-react";
 import { useStore } from "../../context/StoreContext";
+import { toast } from "sonner";
 import { C } from "../../lib/data";
 
 export default function ProfilePage() {
@@ -141,7 +142,7 @@ export default function ProfilePage() {
               <div className="mt-8 flex justify-end">
                 <button 
                   type="button" 
-                  onClick={() => alert("Profile updated successfully!")}
+                  onClick={() => toast.success("Profile updated successfully!")}
                   className="px-10 py-4 bg-black text-white text-xs tracking-widest uppercase hover:bg-black/90 transition-colors"
                 >
                   Save Changes

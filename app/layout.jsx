@@ -1,6 +1,7 @@
 import './globals.css';
 import { StoreProvider } from '../context/StoreContext';
 import LayoutWrapper from '../components/LayoutWrapper';
+import { Toaster } from 'sonner';
 
 export const metadata = {
   title: 'Aavaran | Premium Ethnic Wear',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <StoreProvider>
+          <Toaster position="top-center" />
           <LayoutWrapper>
             {children}
           </LayoutWrapper>

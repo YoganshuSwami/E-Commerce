@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { C } from "../lib/data";
 import { Instagram, Facebook, Twitter, ArrowRight } from "lucide-react";
+import { toast } from "sonner";
 
 export default function Footer() {
   return (
@@ -23,16 +24,17 @@ export default function Footer() {
             
             <div className="max-w-md relative mt-4">
               <span className="block text-xs uppercase tracking-widest text-white/60 mb-4">Subscribe to our newsletter</span>
-              <div className="flex border-b border-white/40 pb-2">
+              <form onSubmit={(e) => { e.preventDefault(); toast.success("Thanks for subscribing to our newsletter!"); }} className="flex border-b border-white/40 pb-2">
                 <input 
                   type="email" 
                   placeholder="Enter your email address" 
+                  required
                   className="bg-transparent w-full text-sm placeholder-white/40 focus:outline-none text-white"
                 />
-                <button className="text-white hover:text-white/70 transition-colors">
+                <button type="submit" className="text-white hover:text-white/70 transition-colors">
                   <ArrowRight size={20} strokeWidth={1.5} />
                 </button>
-              </div>
+              </form>
             </div>
           </div>
 
@@ -61,9 +63,9 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-white/70 transition-colors"><Instagram size={20} strokeWidth={1.5} /></a>
-            <a href="#" className="hover:text-white/70 transition-colors"><Facebook size={20} strokeWidth={1.5} /></a>
-            <a href="#" className="hover:text-white/70 transition-colors"><Twitter size={20} strokeWidth={1.5} /></a>
+            <button onClick={() => toast.info("Opening Instagram...")} className="hover:text-white/70 transition-colors"><Instagram size={20} strokeWidth={1.5} /></button>
+            <button onClick={() => toast.info("Opening Facebook...")} className="hover:text-white/70 transition-colors"><Facebook size={20} strokeWidth={1.5} /></button>
+            <button onClick={() => toast.info("Opening Twitter...")} className="hover:text-white/70 transition-colors"><Twitter size={20} strokeWidth={1.5} /></button>
           </div>
           
           <p className="text-xs text-white/50 tracking-widest">

@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
+import { toast } from "sonner";
 import { useStore } from "../../context/StoreContext";
 import { C } from "../../lib/data";
 
@@ -137,7 +138,7 @@ export default function OrdersPage() {
                     <h3 className="text-lg font-medium mb-1" style={{ fontFamily: "Fraunces, serif" }}>Tara Cotton Co-ord Set</h3>
                     <p className="text-sm text-gray-500 mb-4">Size: S | Qty: 1</p>
                     <div className="flex gap-4">
-                      <button className="text-xs uppercase tracking-widest border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors">
+                      <button onClick={() => toast.success("Added to cart!")} className="text-xs uppercase tracking-widest border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors">
                         Buy Again
                       </button>
                     </div>

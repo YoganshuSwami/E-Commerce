@@ -31,7 +31,7 @@ export default function Header() {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "py-2 shadow-lg" : "py-4"} backdrop-blur-md`}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "py-1 shadow-md" : "py-2"} backdrop-blur-md`}
         style={{ backgroundColor: isScrolled ? "rgba(107, 30, 42, 0.95)" : C.oxblood, color: C.cream }}
       >
         <div className="max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between">
@@ -45,7 +45,7 @@ export default function Header() {
 
           {/* Nav Links (Desktop) */}
           <nav className="hidden md:flex flex-1 items-center gap-10" style={{ fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            <div className="group relative py-4">
+            <div className="group relative py-2">
               <Link href="/products" className="hover:text-white/70 transition-colors">Shop</Link>
               {/* Simple Mega Menu Dropdown */}
               <div className="absolute top-full left-0 mt-0 w-48 bg-white text-black shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100 flex flex-col py-4 px-6 rounded-sm">
@@ -54,12 +54,12 @@ export default function Header() {
                 <Link href="/products?cat=pant" className="text-xs hover:text-gray-500">Bottoms</Link>
               </div>
             </div>
-            <Link href="/about" className="hover:text-white/70 transition-colors py-4">Our Story</Link>
+            <Link href="/about" className="hover:text-white/70 transition-colors py-2">Our Story</Link>
           </nav>
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 text-center flex-1 md:flex-none">
-            <div style={{ fontFamily: "Fraunces, serif", fontSize: 32, fontWeight: 500, color: C.cream, letterSpacing: "0.02em" }}>
+            <div style={{ fontFamily: "Fraunces, serif", fontSize: 26, fontWeight: 500, color: C.cream, letterSpacing: "0.02em" }}>
               Aavaran
             </div>
           </Link>
@@ -67,13 +67,13 @@ export default function Header() {
           {/* Icons */}
           <div className="flex flex-1 justify-end items-center gap-6 md:gap-8">
             <button className="hidden md:block hover:text-white/70 transition-colors" onClick={() => setSearchOpen(true)}>
-              <Search size={22} strokeWidth={1.5} />
+              <Search size={20} strokeWidth={1.5} />
             </button>
             <button className="hover:text-white/70 transition-colors" onClick={() => user ? window.location.href='/profile' : setLoginOpen(true)}>
-              <User size={22} strokeWidth={1.5} fill={user ? C.cream : "none"} />
+              <User size={20} strokeWidth={1.5} fill={user ? C.cream : "none"} />
             </button>
             <Link href="/cart" className="relative hover:text-white/70 transition-colors">
-              <ShoppingBag size={22} strokeWidth={1.5} />
+              <ShoppingBag size={20} strokeWidth={1.5} />
               {cartCount > 0 && (
                 <span className="absolute -top-1.5 -right-2 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {cartCount}
@@ -102,7 +102,7 @@ export default function Header() {
       </header>
       
       {/* Spacer to push content below fixed header */}
-      <div className="h-[72px] md:h-[88px]" />
+      <div className="h-[56px] md:h-[64px]" />
       
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       {loginOpen && <LoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} />}

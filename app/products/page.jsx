@@ -5,6 +5,7 @@ import { PRODUCTS, CATEGORIES, C } from "../../lib/data";
 import ProductCard from "../../components/ProductCard";
 import { useStore } from "../../context/StoreContext";
 import { Filter, X } from "lucide-react";
+import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
 function ShopContent() {
@@ -88,7 +89,7 @@ function ShopContent() {
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <ProductCard product={product} onAdd={(p) => { addToCart(p, "M", 1); alert(`${p.name} added!`); }} />
+                    <ProductCard product={product} onAdd={(p) => { addToCart(p, "M", 1); toast.success(`${p.name} added!`); }} />
                   </motion.div>
                 ))}
               </AnimatePresence>
