@@ -90,7 +90,7 @@ export default function OrdersPage() {
                 <div className="flex flex-col md:flex-row gap-6 items-center">
                   <div className="w-24 h-32 bg-white shrink-0 relative overflow-hidden border border-gray-200">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Item" className="object-cover w-full h-full" />
+                    <img src="/images/kurti_red.jpg" alt="Item" className="object-cover w-full h-full" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-medium mb-1" style={{ fontFamily: "Fraunces, serif" }}>Meera Bell-Sleeve Kurti</h3>
@@ -132,7 +132,7 @@ export default function OrdersPage() {
                 <div className="flex flex-col md:flex-row gap-6 items-center">
                   <div className="w-24 h-32 bg-white shrink-0 relative overflow-hidden border border-gray-200 opacity-60">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="https://images.pexels.com/photos/2836486/pexels-photo-2836486.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Item" className="object-cover w-full h-full" />
+                    <img src="/images/coord_olive.jpg" alt="Item" className="object-cover w-full h-full" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-medium mb-1" style={{ fontFamily: "Fraunces, serif" }}>Tara Cotton Co-ord Set</h3>

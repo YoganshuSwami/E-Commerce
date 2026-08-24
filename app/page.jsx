@@ -22,7 +22,7 @@ export default function Home() {
       <section className="relative h-[90vh] md:h-screen w-full overflow-hidden flex items-center justify-center">
         <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
           <Image 
-            src="https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+            src="/images/kurti_red.jpg" 
             alt="Hero Background" 
             fill 
             sizes="100vw" 
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
             <div className="w-full lg:w-1/2 relative aspect-[4/5] overflow-hidden">
               <Image 
-                src="https://images.pexels.com/photos/2836486/pexels-photo-2836486.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                src="/images/coord_olive.jpg" 
                 alt="Co-ord Sets Collection" 
                 fill 
                 sizes="(max-width: 1024px) 100vw, 50vw" 

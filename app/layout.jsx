@@ -7,7 +7,7 @@ export const metadata = {
   title: 'Aavaran | Premium Ethnic Wear',
   description: 'Redefining modern ethnic wear for the contemporary Indian woman.',
   icons: {
-    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">✨</text></svg>',
+    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%236B1E2A"/><text x="50" y="70" font-size="70" font-family="serif" fill="%23F5F0E6" text-anchor="middle">A</text></svg>',
   },
 };
 

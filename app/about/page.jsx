@@ -8,7 +8,7 @@ export default function AboutPage() {
     <div>
       {/* Hero */}
       <section style={{ height: "60vh", background: C.bottle, position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.pexels.com/photos/3317434/pexels-photo-3317434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.3 }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/images/kurti_white.jpg)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.3 }} />
         <div className="relative z-10 text-center px-4" style={{ color: C.cream }}>
           <h1 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", marginBottom: 16 }}>Our Story</h1>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: 18, letterSpacing: "0.05em", opacity: 0.9 }}>Redefining the modern Indian wardrobe.</p>
@@ -27,10 +27,10 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
           <div className="relative h-96 rounded-lg overflow-hidden">
-             <Image src="https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Craftsmanship" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+             <Image src="/images/kurti_red.jpg" alt="Craftsmanship" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </div>
           <div className="relative h-96 rounded-lg overflow-hidden">
-             <Image src="https://images.pexels.com/photos/2836486/pexels-photo-2836486.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Design" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+             <Image src="/images/coord_olive.jpg" alt="Design" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </div>
         </div>
       </section>
