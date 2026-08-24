@@ -37,9 +37,12 @@ export default function Header() {
         <div className="max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between">
           
           {/* Mobile Menu Icon */}
-          <div className="md:hidden flex-1">
+          <div className="md:hidden flex-1 flex items-center gap-4">
             <button onClick={() => setMenuOpen(!menuOpen)} className="hover:opacity-70 transition-opacity">
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+            <button className="hover:text-white/70 transition-colors" onClick={() => setSearchOpen(true)}>
+              <Search size={20} strokeWidth={1.5} />
             </button>
           </div>
 

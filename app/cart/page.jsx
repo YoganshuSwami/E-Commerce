@@ -9,7 +9,7 @@ import { C } from "../../lib/data";
 export default function CartPage() {
   const { cart, removeFromCart, updateQty } = useStore();
 
-  const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   // Free shipping threshold simulation
   const threshold = 5000;
@@ -54,15 +54,15 @@ export default function CartPage() {
                   {/* Image & Info */}
                   <div className="col-span-1 md:col-span-6 flex gap-6">
                     <div className="w-24 md:w-32 aspect-[3/4] relative bg-gray-50 border border-gray-100 shrink-0">
-                      <Image src={item.product.images[0]} alt={item.product.name} fill sizes="128px" style={{ objectFit: "cover" }} />
+                      <Image src={item.images[0]} alt={item.name} fill sizes="128px" style={{ objectFit: "cover" }} />
                     </div>
                     <div className="flex flex-col justify-center">
                       <h3 className="text-base md:text-lg mb-1 leading-snug" style={{ fontFamily: "Fraunces, serif", color: C.ink }}>
-                        <Link href={`/products/${item.product.id}`} className="hover:underline">{item.product.name}</Link>
+                        <Link href={`/products/${item.id}`} className="hover:underline">{item.name}</Link>
                       </h3>
                       <p className="text-sm text-gray-500 mb-2" style={{ fontFamily: "Inter, sans-serif" }}>Size: {item.size}</p>
                       <p className="text-sm font-medium md:hidden mb-4" style={{ fontFamily: "Inter, sans-serif" }}>
-                        ₹{item.product.price.toLocaleString("en-IN")}
+                        ₹{item.price.toLocaleString("en-IN")}
                       </p>
                       <button 
                         onClick={() => removeFromCart(item.id, item.size)}
@@ -85,7 +85,7 @@ export default function CartPage() {
 
                   {/* Total */}
                   <div className="hidden md:block col-span-3 text-right text-base font-medium" style={{ fontFamily: "Inter, sans-serif" }}>
-                    ₹{(item.product.price * item.qty).toLocaleString("en-IN")}
+                    ₹{(item.price * item.qty).toLocaleString("en-IN")}
                   </div>
                 </div>
               ))}
