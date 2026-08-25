@@ -23,7 +23,7 @@ export default function sitemap() {
   }));
 
   const productRoutes = PRODUCTS.map((product) => ({
-    url: `${baseUrl}/products/${product.id}`,
+    url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.9,

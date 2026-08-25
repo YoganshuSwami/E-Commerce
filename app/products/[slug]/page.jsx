@@ -10,7 +10,7 @@ import ProductCard from "../../../components/ProductCard";
 import { toast } from "sonner";
 
 export default function ProductDetailsPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const router = useRouter();
   const { addToCart } = useStore();
   
@@ -20,11 +20,11 @@ export default function ProductDetailsPage() {
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
   useEffect(() => {
-    if (id) {
-      const found = PRODUCTS.find((p) => String(p.id) === id);
+    if (slug) {
+      const found = PRODUCTS.find((p) => p.slug === slug);
       if (found) setProduct(found);
     }
-  }, [id]);
+  }, [slug]);
 
   if (!product) return <div className="py-32 text-center text-lg font-['Inter']">Loading...</div>;
 

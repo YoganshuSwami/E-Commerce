@@ -1,7 +1,7 @@
 import { PRODUCTS } from "../../../lib/data";
 
 export function generateMetadata({ params }) {
-  const product = PRODUCTS.find((p) => String(p.id) === params.id);
+  const product = PRODUCTS.find((p) => p.slug === params.slug);
   if (!product) {
     return {
       title: 'Product Not Found',
@@ -31,7 +31,7 @@ export function generateMetadata({ params }) {
 }
 
 export default function ProductLayout({ children, params }) {
-  const product = PRODUCTS.find((p) => String(p.id) === params.id);
+  const product = PRODUCTS.find((p) => p.slug === params.slug);
   
   return (
     <>
@@ -48,7 +48,7 @@ export default function ProductLayout({ children, params }) {
               "sku": `AAV-${product.id}`,
               "offers": {
                 "@type": "Offer",
-                "url": `https://aavaran-ethnic.com/products/${product.id}`,
+                "url": `https://aavaran-ethnic.com/products/${product.slug}`,
                 "priceCurrency": "INR",
                 "price": product.price,
                 "availability": "https://schema.org/InStock",

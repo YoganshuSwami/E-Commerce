@@ -36,9 +36,9 @@ export default function SearchOverlay({ isOpen, onClose }) {
     }
   }, [query]);
 
-  const handleResultClick = (id) => {
+  const handleResultClick = (slug) => {
     onClose();
-    router.push(`/products/${id}`);
+    router.push(`/products/${slug}`);
   };
 
   if (!isOpen) return null;
@@ -107,7 +107,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-12">
                 {results.map(product => (
-                  <div key={product.id} className="cursor-pointer group" onClick={() => handleResultClick(product.id)}>
+                  <div key={product.id} className="cursor-pointer group" onClick={() => handleResultClick(product.slug)}>
                     <div className="relative aspect-[3/4] mb-4 bg-gray-50 overflow-hidden">
                       <Image 
                         src={product.images[0]} 

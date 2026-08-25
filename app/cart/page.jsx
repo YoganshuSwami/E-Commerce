@@ -58,7 +58,7 @@ export default function CartPage() {
                     </div>
                     <div className="flex flex-col justify-center">
                       <h3 className="text-base md:text-lg mb-1 leading-snug" style={{ fontFamily: "Fraunces, serif", color: C.ink }}>
-                        <Link href={`/products/${item.id}`} className="hover:underline">{item.name}</Link>
+                        <Link href={`/products/${item.slug}`} className="hover:underline">{item.name}</Link>
                       </h3>
                       <p className="text-sm text-gray-500 mb-2" style={{ fontFamily: "Inter, sans-serif" }}>Size: {item.size}</p>
                       <p className="text-sm font-medium md:hidden mb-4" style={{ fontFamily: "Inter, sans-serif" }}>

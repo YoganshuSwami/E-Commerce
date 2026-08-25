@@ -11,7 +11,7 @@ export default function ProductCard({ product, onAdd }) {
   const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100);
 
   const handleCardClick = () => {
-    router.push(`/products/${product.id}`);
+    router.push(`/products/${product.slug}`);
   };
 
   const handleAddClick = (e) => {
